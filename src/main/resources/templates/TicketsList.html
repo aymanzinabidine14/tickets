@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+
+      layout:decorate="Template.html"
+>
+
+
+    <head>
+        <link rel="stylesheet" type="text/css" href="webjars/bootstrap/5.2.0/css/bootstrap.min.css"/>
+
+        <meta charset="utf-8">
+        <title>Ticket List</title>
+    </head>
+
+
+    <body>
+    <div layout:fragment="content">
+
+        <div class="p-3 mt-3">
+            <div class="card">
+                <div class="card-header">Ticket List</div>
+                <div class="card-body">
+
+            <table class="table table-bordered">
+                <tr class="table-primary">
+                  <th>Id</th><th>Name</th><th>Description</th><th>Quantity</th><th>Price</th><th>Date</th>
+                    <th th:if="${#authorization.expression('hasAuthority(''ROLE_ADMIN'')')}">Delete</th>
+                    <th th:if="${#authorization.expression('hasAuthority(''ROLE_ADMIN'')')}">Update</th>
+                </tr>
+
+                 <tr th:each="ticket:${ticketsJsp.content}">
+
+                     <td th:text="${ticket.getIdTicket()}"></td>
+                     <td th:text="${ticket.getNomTicket()}"></td>
+                     <td th:text="${ticket.getDescriptionTicket()}"></td>
+                     <td th:text="${ticket.getNombreTicket()}"></td>
+                     <td th:text="${ticket.getPrixTicket()}"></td>
+                     <td th:text="${ticket.getEventdate()}"></td>
+
+
+
+
+                     <td th:if="${#authorization.expression('hasAuthority(''ROLE_ADMIN'')')}">
+                         <a onclick="return confirm('Etes vous sûre?')" class="btn btn-danger"
+                            th:href="@{deleteTicket(id=${ticket.getIdTicket()},page=${currentPage},size=${size})}">
+                             <i class="bi bi-trash"></i>
+                         </a>
+                     </td>
+
+
+
+                     <td th:if="${#authorization.expression('hasAuthority(''ROLE_ADMIN'')')}">
+                         <a class="btn btn-success"
+                             th:href="@{showTicket(id=${ticket.getIdTicket()})}">
+                             <i class="bi bi-pencil"></i>
+                         </a>
+
+                     </td>
+
+                 </tr>
+
+              </table>
+
+            <ul class="nav nav-pills">
+                <li th:each="page,status:${pages}">
+                    <a th:class="${status.index==currentPage?'btn btn-primary':'btn'}"
+                       th:href="@{ticketList(page=${status.index},size=${size})}"
+                       th:text="${status.index}"></a>
+
+                </li>
+            </ul>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    </body>
+
+</html>
+
+

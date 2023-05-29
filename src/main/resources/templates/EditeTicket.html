@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="Template.html"
+>
+<head>
+  <link rel="stylesheet" type="text/css" href="webjars/bootstrap/5.2.0/css/bootstrap.min.css"/>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Creation</title>
+</head>
+
+
+<body>
+
+
+
+
+<div layout:fragment="content">
+  <div class="col-md-6 mt-3 offset-3">
+    <h1>Edit Product Info</h1>
+
+  <form th:action="@{updateTicket}" method="post">
+
+    <div class="mb-3">
+      <label for="IdTicket" class="form-label">Id : </label>
+      <input type="text" id="IdTicket" name="IdTicket" class="form-control" th:value="${ticketsJsp.IdTicket}">
+    </div>
+
+    <div class="mb-3">
+      <label for="NomTicket" class="form-label">Name : </label>
+      <input type="text" id="NomTicket" name="NomTicket" class="form-control" th:value="${ticketsJsp.NomTicket}">
+    </div>
+
+    <div class="mb-3">
+      <label for="DescriptionTicket" class="form-label">Description : </label>
+      <input type="text" id="DescriptionTicket" name="DescriptionTicket" class="form-control" th:value="${ticketsJsp.DescriptionTicket}">
+    </div>
+
+
+    <div class="mb-3">
+      <label for="PrixTicket" class="form-label">Price : </label>
+      <input type="text" id="PrixTicket" name="PrixTicket" class="form-control" th:value="${ticketsJsp.PrixTicket}">
+    </div>
+
+
+    <div class="mb-3">
+      <label for="Eventdate" class="form-label">Creation Date : </label>
+      <input type="date" id="Eventdate" name="Eventdate" class="form-control" th:value="${ticketsJsp.Eventdate}">
+    </div>
+
+    <div class="mb-3">
+      <label for="NombreTicket" class="form-label">quantite : </label>
+      <input type="text" id="NombreTicket" name="NombreTicket" class="form-control" th:value="${ticketsJsp.NombreTicket}">
+    </div>
+
+    <button type="submit" class="btn btn-primary">Update</button>
+
+  </form>
+  </div>
+</main>
+</div>
+</body>
+
+
+</html>
+
+

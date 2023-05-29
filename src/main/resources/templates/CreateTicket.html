@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="Template.html"
+>
+    <head>
+        <link rel="stylesheet" type="text/css" href="webjars/bootstrap/5.2.0/css/bootstrap.min.css"/>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Product Creation</title>
+    </head>
+
+
+    <body>
+
+    <div layout:fragment="content">
+    <div class="col-md-6 mt-3 offset-3">
+
+        <h1>Edit Product Info</h1>
+
+        <form th:action="@{saveTicket}" method="post" enctype="multipart/form-data">
+
+            <div class="mb-3">
+                <label for="NomTicket" class="form-label">Name</label>
+                <input type="text" class="form-control" id="NomTicket" name="NomTicket" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="DescriptionTicket" class="form-label">Description</label>
+                <textarea type="text"  class="form-control" id="DescriptionTicket" name="DescriptionTicket"  required></textarea>
+            </div>
+
+            <div class="mb-3">
+                <label for="PrixTicket" class="form-label">Price</label>
+                <input class="form-control" id="PrixTicket" name="PrixTicket"  required>
+            </div>
+
+            <div class="mb-3">
+                <label for="NombreTicket" class="form-label">Quantite</label>
+                <input class="form-control" id="NombreTicket" name="NombreTicket" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="Eventdate" class="form-label">Date</label>
+                <input  class="form-control" type="date" id="Eventdate" name="Eventdate" value="${now}" required>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Add Ticket</button>
+        </form>
+    </div>
+    </div>
+
+
+    </body>
+
+
+</html>
+
+

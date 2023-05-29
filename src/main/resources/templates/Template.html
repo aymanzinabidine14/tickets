@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6"
+
+>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="webjars/bootstrap/5.2.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="webjars/bootstrap-icons/1.10.5/font/bootstrap-icons.css"/>
+    <script src="/webjars/bootstrap/5.2.0/js/bootstrap.bundle.min.js"></script>
+    <meta charset="utf-8">
+    <title>Products List</title>
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-sm bg-info navbar-info">
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active" th:if="${#authorization.expression('hasAnyAuthority(''ROLE_ADMIN'',''ROLE_MODERATOR'')')}">
+                <a class="nav-link" th:href="@{createTicket}">Creer ticket</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{ticketList}">List</a>
+            </li>
+
+            <li class="nav-item dropdown">
+
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                   th:text="${#authentication.name}"
+                >[Patients]</a>
+
+                <ul class="dropdown-menu">
+
+                    <li>
+                        <form method="post" th:action="@{/logout}">
+                            <button class="dropdown-item" type="submit"  >Logout</button>
+                        </form>
+
+                    </li>
+
+
+                </ul>
+            </li>
+
+        </ul>
+
+    </div>
+</nav>
+
+<div layout:fragment="content">
+
+
+</div>
+
+</body>
+
+</html>
+
+
